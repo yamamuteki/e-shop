@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= Product.model_name.human %></h1>
+
+<div class="text-right">
+  <%= link_to '追加', new_product_path, class: 'btn btn-primary' %>
+</div>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= Product.human_attribute_name :name %></th>
+      <th><%= Product.human_attribute_name :price %></th>
+      <th><%= Product.human_attribute_name :stock %></th>
+      <th><%= Product.human_attribute_name :note %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= product.stock %></td>
+        <td><%= product.note %></td>
+        <td><%= link_to '表示', product, class: 'btn btn-default' %></td>
+        <td><%= link_to '編集', edit_product_path(product), class: 'btn btn-default' %></td>
+        <td><%= link_to '削除', product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
