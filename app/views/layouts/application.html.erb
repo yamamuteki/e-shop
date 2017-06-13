@@ -10,6 +10,11 @@
 
   <body>
     <div class="container">
+      <% if user_signed_in? %>
+        <div class="text-right">
+          <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-default' %>
+        </div>
+      <% end %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
